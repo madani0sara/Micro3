@@ -1,0 +1,15 @@
+int led = 9;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  if (Serial.available()) {
+    int val = Serial.parseInt();           
+    if (val >= 0 && val <= 100) {
+      analogWrite(led, map(val, 0, 100, 0, 255));  
+    }
+  }
+}
